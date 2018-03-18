@@ -1,7 +1,7 @@
 const execa = require('execa')
-const os = require('os');
 const path = require('path');
 const fs = require('fs');
+const sh = require('shelljs');
 const chalk = require('chalk')
 
 const parse = ({ code, stdout, stderr }, resolve, reject) => {
@@ -29,17 +29,13 @@ const parse = ({ code, stdout, stderr }, resolve, reject) => {
 
 module.exports = () => {
   return new Promise((resolve, reject) => {
-    execa
-      .shell('pwd', {detached: true})
-      .then(({code, stdout, stderr}) => {
-        if (fs.existsSync(path.join(stdout, 'package.json')) && code !== 1) {
-          return execa
-            .shell('npm list --depth=0 --json --silent', {detached: true})
-            .then(result => parse(result, resolve, reject))
-            .catch(result => parse(result, resolve, reject));
-        }
-        return reject('Err: You\'re not in npm project folder.');
-      })
-      .catch(({stderr}) => reject(stderr));
+    const output = sh.pwd();
+    if (fs.existsSync(path.join(output.stdout, 'package.json')) && output.code !== 1) {
+      return execa
+        .shell('npm list --depth=0 --json --silent', {detached: true})
+        .then(result => parse(result, resolve, reject))
+        .catch(result => parse(result, resolve, reject));
+    }
+    return reject('Err: You\'re not in npm project folder.');
   });
 }
