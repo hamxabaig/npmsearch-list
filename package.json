@@ -14,8 +14,8 @@
   },
   "files": [
     "index.js",
-    "history.js",
-    "exec.js"
+    "search.js",
+    "packagesList.js"
   ],
   "keywords": [
     "npm",
