@@ -1,0 +1,39 @@
+{
+  "name": "npmsearch-list",
+  "version": "1.0.0",
+  "description": "A CLI tool to search npm packages installed in a project.",
+  "homepage": "https://github.com/hamxabaig/npm-search#readme",
+  "main": "index.js",
+  "bin": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamxabaig/npm-search.git"
+  },
+  "files": [
+    "index.js",
+    "history.js",
+    "exec.js"
+  ],
+  "keywords": [
+    "npm",
+    "cli",
+    "list",
+    "search",
+    "list-packages",
+    "packages",
+    "npm modules"
+  ],
+  "author": "Hamza Baig<hamzabaig18@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "execa": "0.7.0",
+    "fuse.js": "3.0.5",
+    "inquirer": "3.0.6",
+    "inquirer-autocomplete-prompt": "0.11.0",
+    "lodash.uniq": "4.5.0",
+    "ora": "1.2.0"
+  }
+}
