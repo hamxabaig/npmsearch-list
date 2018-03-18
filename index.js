@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 const inquirer = require('inquirer');
-const search = require('./core');
-const getPackagesList = require('./core/packagesList');
+const search = require('./search');
+const getPackagesList = require('./packagesList');
 const autocomplete = require('inquirer-autocomplete-prompt');
 const chalk = require('chalk');
 
